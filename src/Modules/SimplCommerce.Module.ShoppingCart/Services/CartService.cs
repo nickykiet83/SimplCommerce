@@ -19,13 +19,16 @@ namespace SimplCommerce.Module.ShoppingCart.Services
         private readonly IMediaService _mediaService;
         private readonly ICouponService _couponService;
         private readonly bool _isProductPriceIncludeTax;
+        private readonly ICurrencyService _currencyService;
 
-        public CartService(IRepository<Cart> cartRepository, IRepository<CartItem> cartItemRepository, ICouponService couponService, IMediaService mediaService, IConfiguration config)
+        public CartService(IRepository<Cart> cartRepository, IRepository<CartItem> cartItemRepository, ICouponService couponService,
+            IMediaService mediaService, IConfiguration config, ICurrencyService currencyService)
         {
             _cartRepository = cartRepository;
             _cartItemRepository = cartItemRepository;
             _couponService = couponService;
             _mediaService = mediaService;
+            _currencyService = currencyService;
             _isProductPriceIncludeTax = config.GetValue<bool>("Catalog.IsProductPriceIncludeTax");
         }
 
@@ -112,22 +115,23 @@ namespace SimplCommerce.Module.ShoppingCart.Services
                 return null;
             }
 
-            var cartVm = new CartVm()
+            var cartVm = new CartVm(_currencyService)
             {
                 Id = cart.Id,
                 CouponCode = cart.CouponCode,
                 IsProductPriceIncludeTax = cart.IsProductPriceIncludeTax,
                 TaxAmount = cart.TaxAmount,
                 ShippingAmount = cart.ShippingAmount,
-                OrderNote = cart.OrderNote
+                OrderNote = cart.OrderNote,
+                LockedOnCheckout = cart.LockedOnCheckout
             };
 
             cartVm.Items = _cartItemRepository
                 .Query()
                 .Include(x => x.Product).ThenInclude(p => p.ThumbnailImage)
                 .Include(x => x.Product).ThenInclude(p => p.OptionCombinations).ThenInclude(o => o.Option)
-                .Where(x => x.CartId == cart.Id)
-                .Select(x => new CartItemVm
+                .Where(x => x.CartId == cart.Id).ToList()
+                .Select(x => new CartItemVm(_currencyService)
                 {
                     Id = x.Id,
                     ProductId = x.ProductId,
@@ -219,6 +223,20 @@ namespace SimplCommerce.Module.ShoppingCart.Services
                 }
 
                await _cartRepository.SaveChangesAsync();
+            }
+        }
+
+        public async Task UnlockCart(Cart cart)
+        {
+            if(cart == null)
+            {
+                throw new ArgumentNullException(nameof(cart));
+            }
+
+            if (cart.LockedOnCheckout)
+            {
+                cart.LockedOnCheckout = false;
+                await _cartRepository.SaveChangesAsync();
             }
         }
     }

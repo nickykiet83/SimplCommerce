@@ -7,14 +7,14 @@
     function productSelectionDirective() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'modules/catalog/admin/product/product-selection-directive.html',
+            templateUrl: '_content/SimplCommerce.Module.Catalog/product-selection-directive.html',
             scope: {
                 selectedProducts: '=selectedProducts',
                 modelId: '@modelId',
                 title: '@title',
                 isVisibleIndividually: '@isVisibleIndividually'
             },
-            controller: ProductSelectionCtrl,
+            controller: ['productService', ProductSelectionCtrl],
             controllerAs: 'vm',
             bindToController: true
         };

@@ -6,12 +6,12 @@
     function reviewWidget() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'modules/reviews/admin/review/review-widget.directive.html',
+            templateUrl: '_content/SimplCommerce.Module.Reviews/admin/review/review-widget.directive.html',
             scope: {
                 status: '=',
                 numRecords: '='
             },
-            controller: ReviewWidgetCtrl,
+            controller: ['reviewService', 'translateService', ReviewWidgetCtrl],
             controllerAs: 'vm',
             bindToController: true
         };
@@ -19,7 +19,6 @@
         return directive;
     }
 
-    /* @ngInject */
     function ReviewWidgetCtrl(reviewService, translateService) {
         var vm = this;
         vm.translate = translateService;

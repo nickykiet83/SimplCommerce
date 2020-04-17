@@ -6,19 +6,18 @@
     function shipmentListByOrder() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'modules/shipments/admin/shipment/shipment-list-by-order.directive.html',
+            templateUrl: '_content/SimplCommerce.Module.Shipments/admin/shipment/shipment-list-by-order.directive.html',
             scope: {},
             bindToController: {
                 orderId: '='
             },
-            controller: ShipmentListByOrderCtrl,
+            controller: ['shipmentService', 'translateService', ShipmentListByOrderCtrl],
             controllerAs: 'vm'
         };
 
         return directive;
     }
 
-    /* @ngInject */
     function ShipmentListByOrderCtrl(shipmentService, translateService) {
         var vm = this;
         vm.translate = translateService;

@@ -1,20 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using SimplCommerce.Module.Core.Services;
+using System.Collections.Generic;
 
 namespace SimplCommerce.Module.ShoppingCart.Areas.ShoppingCart.ViewModels
 {
     public class CartVm
     {
+        private readonly ICurrencyService _currencyService;
+
+        public CartVm(ICurrencyService currencyService)
+        {
+            _currencyService = currencyService;
+        }
+
         public long Id { get; set; }
+
+        public bool LockedOnCheckout { get; set; }
 
         public string CouponCode { get; set; }
 
         public decimal SubTotal { get; set; }
 
-        public string SubTotalString { get { return SubTotal.ToString("C"); } }
+        public string SubTotalString { get { return _currencyService.FormatCurrency(SubTotal); } }
 
         public decimal Discount { get; set; }
 
-        public string DiscountString { get { return Discount.ToString("C"); } }
+        public string DiscountString { get { return _currencyService.FormatCurrency(Discount); } }
 
         public string CouponValidationErrorMessage { get; set; }
 
@@ -28,7 +38,7 @@ namespace SimplCommerce.Module.ShoppingCart.Areas.ShoppingCart.ViewModels
         {
             get
             {
-                return TaxAmount.HasValue ? TaxAmount.Value.ToString("C") : "-";
+                return TaxAmount.HasValue ? _currencyService.FormatCurrency(TaxAmount.Value) : "-";
             }
         }
 
@@ -36,7 +46,7 @@ namespace SimplCommerce.Module.ShoppingCart.Areas.ShoppingCart.ViewModels
 
         public string ShippingAmountString
         {
-            get { return ShippingAmount.HasValue ? ShippingAmount.Value.ToString("C") : "-"; }
+            get { return ShippingAmount.HasValue ? _currencyService.FormatCurrency(ShippingAmount.Value) : "-"; }
         }
 
         public decimal SubTotalWithDiscount
@@ -73,7 +83,7 @@ namespace SimplCommerce.Module.ShoppingCart.Areas.ShoppingCart.ViewModels
             }
         }
 
-        public string OrderTotalString { get { return OrderTotal.ToString("C"); } }
+        public string OrderTotalString { get { return _currencyService.FormatCurrency(OrderTotal); } }
 
         public IList<CartItemVm> Items { get; set; } = new List<CartItemVm>();
 

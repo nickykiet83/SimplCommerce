@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.Loader;
-using System.Text;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,23 +14,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.Extensions.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using SimplCommerce.Infrastructure;
 using SimplCommerce.Infrastructure.Modules;
-using SimplCommerce.Infrastructure.Web;
 using SimplCommerce.Infrastructure.Web.ModelBinders;
 using SimplCommerce.Module.Core.Data;
 using SimplCommerce.Module.Core.Extensions;
 using SimplCommerce.Module.Core.Models;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.EntityFrameworkCore.Extensions;
-using Microsoft.Extensions.Localization;
+using SimplCommerce.WebHost.IdentityServer;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace SimplCommerce.WebHost.Extensions
 {
@@ -40,28 +37,28 @@ namespace SimplCommerce.WebHost.Extensions
 
         public static IServiceCollection AddModules(this IServiceCollection services, string contentRootPath)
         {
-            const string moduleManifestName = "module.json";
-            var modulesFolder = Path.Combine(contentRootPath, "Modules");
+            // No need module.json at the moment. Consider put as embbeded resource if needed
+            //const string moduleManifestName = "module.json";
+            //var modulesFolder = Path.Combine(contentRootPath, "Modules");
             foreach (var module in _modulesConfig.GetModules())
             {
-                var moduleFolder = new DirectoryInfo(Path.Combine(modulesFolder, module.Id));
-                var moduleManifestPath = Path.Combine(moduleFolder.FullName, moduleManifestName);
-                if (!File.Exists(moduleManifestPath))
-                {
-                    throw new MissingModuleManifestException($"The manifest for the module '{moduleFolder.Name}' is not found.", moduleFolder.Name);
-                }
+                //var moduleFolder = new DirectoryInfo(Path.Combine(modulesFolder, module.Id));
+                //var moduleManifestPath = Path.Combine(moduleFolder.FullName, moduleManifestName);
+                //if (!File.Exists(moduleManifestPath))
+                //{
+                //    throw new MissingModuleManifestException($"The manifest for the module '{moduleFolder.Name}' is not found.", moduleFolder.Name);
+                //}
 
-                using (var reader = new StreamReader(moduleManifestPath))
-                {
-                    string content = reader.ReadToEnd();
-                    dynamic moduleMetadata = JsonConvert.DeserializeObject(content);
-                    module.Name = moduleMetadata.name;
-                    module.IsBundledWithHost = moduleMetadata.isBundledWithHost;
-                }
+                //using (var reader = new StreamReader(moduleManifestPath))
+                //{
+                //    string content = reader.ReadToEnd();
+                //    dynamic moduleMetadata = JsonConvert.DeserializeObject(content);
+                //    module.Name = moduleMetadata.name;
+                //}
 
                 if(!module.IsBundledWithHost)
                 {
-                    TryLoadModuleAssembly(moduleFolder.FullName, module);
+                    TryLoadModuleAssembly(module.Id, module);
                     if (module.Assembly == null)
                     {
                         throw new Exception($"Cannot find main assembly for module {module.Id}");
@@ -69,11 +66,10 @@ namespace SimplCommerce.WebHost.Extensions
                 }
                 else
                 {
-                    module.Assembly = Assembly.Load(new AssemblyName(moduleFolder.Name));
+                    module.Assembly = Assembly.Load(new AssemblyName(module.Id));
                 }
 
                 GlobalConfiguration.Modules.Add(module);
-                RegisterModuleInitializerServices(module, ref services);
             }
 
             return services;
@@ -86,23 +82,17 @@ namespace SimplCommerce.WebHost.Extensions
                 {
                     o.EnableEndpointRouting = false;
                     o.ModelBinderProviders.Insert(0, new InvariantDecimalModelBinderProvider());
-                    o.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 })
-                .AddRazorOptions(o =>
-                {
-                    foreach (var module in modules.Where(x => !x.IsBundledWithHost))
-                    {
-                        o.AdditionalCompilationReferences.Add(MetadataReference.CreateFromFile(module.Assembly.Location));
-                    }
-                })
+                .AddRazorRuntimeCompilation()
                 .AddViewLocalization()
                 .AddModelBindingMessagesLocalizer(services)
-                .AddDataAnnotationsLocalization(o => {
+                .AddDataAnnotationsLocalization(o =>
+                {
                     var factory = services.BuildServiceProvider().GetService<IStringLocalizerFactory>();
                     var L = factory.Create(null);
-                    o.DataAnnotationLocalizerProvider = (t,f) => L;
-                })                
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                    o.DataAnnotationLocalizerProvider = (t, f) => L;
+                })
+                .AddNewtonsoftJson();
 
             foreach (var module in modules.Where(x => !x.IsBundledWithHost))
             {
@@ -113,7 +103,7 @@ namespace SimplCommerce.WebHost.Extensions
         }
 
         /// <summary>
-        /// localize ModelBinding messages, e.g. when user enters string value instead of number...
+        /// Localize ModelBinding messages, e.g. when user enters string value instead of number...
         /// these messages can't be localized like data attributes
         /// </summary>
         /// <param name="mvc"></param>
@@ -171,10 +161,26 @@ namespace SimplCommerce.WebHost.Extensions
                     options.Password.RequireUppercase = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequiredUniqueChars = 0;
+                    options.ClaimsIdentity.UserNameClaimType = JwtRegisteredClaimNames.Sub;
                 })
                 .AddRoleStore<SimplRoleStore>()
                 .AddUserStore<SimplUserStore>()
+                .AddSignInManager<SimplSignInManager<User>>()
                 .AddDefaultTokenProviders();
+
+            services.AddIdentityServer(options =>
+                 {
+                     options.Events.RaiseErrorEvents = true;
+                     options.Events.RaiseInformationEvents = true;
+                     options.Events.RaiseFailureEvents = true;
+                     options.Events.RaiseSuccessEvents = true;
+                 })
+                 .AddInMemoryIdentityResources(IdentityServerConfig.Ids)
+                 .AddInMemoryApiResources(IdentityServerConfig.Apis)
+                 .AddInMemoryClients(IdentityServerConfig.Clients)
+                 .AddAspNetIdentity<User>()
+                 .AddProfileService<SimplProfileService>()
+                 .AddDeveloperSigningCredential(); // not recommended for production - you need to store your key material somewhere secure
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie()
@@ -197,18 +203,10 @@ namespace SimplCommerce.WebHost.Extensions
                         OnRemoteFailure = ctx => HandleRemoteLoginFailure(ctx)
                     };
                 })
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = configuration["Authentication:Jwt:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:Jwt:Key"]))
-                    };
+                .AddLocalApi(JwtBearerDefaults.AuthenticationScheme, option => {
+                    option.ExpectedScope = "api.simplcommerce";
                 });
+
             services.ConfigureApplicationCookie(x =>
             {
                 x.LoginPath = new PathString("/login");
@@ -286,16 +284,6 @@ namespace SimplCommerce.WebHost.Extensions
                         module.Assembly = assembly;
                     }
                 }
-            }
-        }
-
-        private static void RegisterModuleInitializerServices(ModuleInfo module, ref IServiceCollection services)
-        {
-            var moduleInitializerType = module.Assembly.GetTypes()
-                    .FirstOrDefault(t => typeof(IModuleInitializer).IsAssignableFrom(t));
-            if ((moduleInitializerType != null) && (moduleInitializerType != typeof(IModuleInitializer)))
-            {
-                services.AddSingleton(typeof(IModuleInitializer), moduleInitializerType);
             }
         }
 

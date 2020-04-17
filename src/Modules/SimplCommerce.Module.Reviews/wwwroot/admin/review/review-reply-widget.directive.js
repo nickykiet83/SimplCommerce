@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
     angular
         .module('simplAdmin.reviews')
         .directive('reviewReplyWidget', reviewReplyWidget);
@@ -6,12 +6,12 @@
     function reviewReplyWidget() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'modules/reviews/admin/review/review-reply-widget.directive.html',
+            templateUrl: '_content/SimplCommerce.Module.Reviews/admin/review/review-reply-widget.directive.html',
             scope: {
                 status: '=',
                 numRecords: '='
             },
-            controller: ReviewReplyWidgetCtrl,
+            controller: ['reviewReplyService', 'translateService', ReviewReplyWidgetCtrl],
             controllerAs: 'vm',
             bindToController: true
         };
@@ -19,7 +19,6 @@
         return directive;
     }
 
-    /* @ngInject */
     function ReviewReplyWidgetCtrl(reviewReplyService, translateService) {
         var vm = this;
         vm.translate = translateService;
