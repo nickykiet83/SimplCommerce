@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
-    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
-    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.3.0/build/netcoreapp1.0" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_SimplCommerce.1475393091.00" t="ExcludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_SimplCommerce.1475393091.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p=".editorconfig" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
@@ -25,6 +25,7 @@
           <e p="StaticData-BR.sql" t="Include" />
           <e p="StaticData-CN.sql" t="Include" />
           <e p="StaticData-DE.sql" t="Include" />
+          <e p="StaticData-DefaultLocalization.sql" t="Include" />
           <e p="StaticData-ES.sql" t="Include" />
           <e p="StaticData-FR.sql" t="Include" />
           <e p="StaticData-GB.sql" t="Include" />
@@ -48,6 +49,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="ActivityLogCustomModelBuilder.cs" t="Include" />
               <e p="ActivityRepository.cs" t="Include" />
@@ -65,7 +67,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ActivityLog.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -95,6 +97,7 @@
                   <e p="BrandController.cs" t="Include" />
                   <e p="CategoryApiController.cs" t="Include" />
                   <e p="CategoryController.cs" t="Include" />
+                  <e p="CategoryTranslationApiController.cs" t="Include" />
                   <e p="CategoryWidgetApiController.cs" t="Include" />
                   <e p="ProductApiController.cs" t="Include" />
                   <e p="ProductAttributeApiController.cs" t="Include" />
@@ -104,15 +107,18 @@
                   <e p="ProductOptionApiController.cs" t="Include" />
                   <e p="ProductPriceApiController.cs" t="Include" />
                   <e p="ProductTemplateApiController.cs" t="Include" />
+                  <e p="ProductTranslationApiController.cs" t="Include" />
                   <e p="ProductWidgetApiController.cs" t="Include" />
                   <e p="SimpleProductWidgetApiController.cs" t="Include" />
                 </e>
                 <e p="ViewModels" t="Include">
                   <e p="BrandForm.cs" t="Include" />
+                  <e p="BrandVm.cs" t="Include" />
                   <e p="CategoryForm.cs" t="Include" />
                   <e p="CategoryListItem.cs" t="Include" />
                   <e p="CategoryMenuItem.cs" t="Include" />
                   <e p="CategoryThumbnail.cs" t="Include" />
+                  <e p="CategoryTranslationForm.cs" t="Include" />
                   <e p="CategoryWidgetComponentVm.cs" t="Include" />
                   <e p="CategoryWidgetForm.cs" t="Include" />
                   <e p="CategoryWidgetSettings.cs" t="Include" />
@@ -145,6 +151,7 @@
                   <e p="ProductsByCategory.cs" t="Include" />
                   <e p="ProductTemplateFrom.cs" t="Include" />
                   <e p="ProductThumbnail.cs" t="Include" />
+                  <e p="ProductTranslationForm.cs" t="Include" />
                   <e p="ProductVariationVm.cs" t="Include" />
                   <e p="ProductVm.cs" t="Include" />
                   <e p="ProductWidgetComponentVm.cs" t="Include" />
@@ -193,6 +200,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="CatalogCustomModelBuilder.cs" t="Include" />
               <e p="IProductTemplateProductAttributeRepository.cs" t="Include" />
@@ -224,8 +232,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Catalog.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Catalog.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -256,6 +265,8 @@
                   <e p="category-list.html" t="Include" />
                   <e p="category-list.js" t="Include" />
                   <e p="category-service.js" t="Include" />
+                  <e p="category-translation-form.html" t="Include" />
+                  <e p="category-translation-form.js" t="Include" />
                 </e>
                 <e p="category-widget" t="Include">
                   <e p="category-widget-form.html" t="Include" />
@@ -272,6 +283,8 @@
                   <e p="product-selection-directive.html" t="Include" />
                   <e p="product-selection-directive.js" t="Include" />
                   <e p="product-service.js" t="Include" />
+                  <e p="product-translation-form.html" t="Include" />
+                  <e p="product-translation-form.js" t="Include" />
                 </e>
                 <e p="product-attribute" t="Include">
                   <e p="product-attribute-form.html" t="Include" />
@@ -342,6 +355,7 @@
                   <e p="MenuApiController.cs" t="Include" />
                   <e p="PageApiController.cs" t="Include" />
                   <e p="PageController.cs" t="Include" />
+                  <e p="PageTranslationApiController.cs" t="Include" />
                   <e p="SpaceBarWidgetApiContorller.cs" t="Include" />
                 </e>
                 <e p="ViewModels" t="Include">
@@ -354,6 +368,8 @@
                   <e p="MenuItemForm.cs" t="Include" />
                   <e p="MenuItemVm.cs" t="Include" />
                   <e p="PageForm.cs" t="Include" />
+                  <e p="PageTranslationForm.cs" t="Include" />
+                  <e p="PageVm.cs" t="Include" />
                   <e p="SpaceBarWidgetComponentVm.cs" t="Include" />
                   <e p="SpaceBarWidgetForm.cs" t="Include" />
                   <e p="SpaceBarWidgetSetting.cs" t="Include" />
@@ -381,6 +397,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="CmsCustomModelBuilder.cs" t="Include" />
             </e>
@@ -396,8 +413,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Cms.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Cms.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -434,6 +452,8 @@
                   <e p="page-list.html" t="Include" />
                   <e p="page-list.js" t="Include" />
                   <e p="page-service.js" t="Include" />
+                  <e p="page-translation-form.html" t="Include" />
+                  <e p="page-translation-form.js" t="Include" />
                 </e>
                 <e p="spacebar-widget" t="Include">
                   <e p="spacebar-widget-form.html" t="Include" />
@@ -472,6 +492,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="CommentModelBuilder.cs" t="Include" />
               <e p="CommentRepository.cs" t="Include" />
@@ -486,8 +507,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Comments.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Comments.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -512,11 +534,13 @@
                 <e p="Controllers" t="Include">
                   <e p="ContactApiController.cs" t="Include" />
                   <e p="ContactAreaApiController.cs" t="Include" />
+                  <e p="ContactAreaTranslationApiController.cs" t="Include" />
                   <e p="ContactController.cs" t="Include" />
                 </e>
                 <e p="ViewModels" t="Include">
                   <e p="CompanyInformation.cs" t="Include" />
                   <e p="ContactAreaForm.cs" t="Include" />
+                  <e p="ContactAreaTranslationForm.cs" t="Include" />
                   <e p="ContactAreaVm.cs" t="Include" />
                   <e p="ContactForm.cs" t="Include" />
                   <e p="ContactVm.cs" t="Include" />
@@ -532,6 +556,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="ContactCustomModelBuilder.cs" t="Include" />
             </e>
@@ -540,10 +565,12 @@
               <e p="ContactArea.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Contacts.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Contacts.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -556,6 +583,8 @@
                   <e p="contact-area-list.html" t="Include" />
                   <e p="contact-area-list.js" t="Include" />
                   <e p="contact-area-service.js" t="Include" />
+                  <e p="contact-area-translation-form.html" t="Include" />
+                  <e p="contact-area-translation-form.js" t="Include" />
                 </e>
                 <e p="Contacts" t="Include">
                   <e p="contact-list.html" t="Include" />
@@ -591,7 +620,6 @@
                   <e p="RoleApiController.cs" t="Include" />
                   <e p="StateOrProvinceApiController.cs" t="Include" />
                   <e p="ThemeApiController.cs" t="Include" />
-                  <e p="TokenApiController.cs" t="Include" />
                   <e p="UserAddressController.cs" t="Include" />
                   <e p="UserApiController.cs" t="Include" />
                   <e p="WidgetApiController.cs" t="Include" />
@@ -608,6 +636,7 @@
                     <e p="SendCodeViewModel.cs" t="Include" />
                     <e p="VerifyCodeViewModel.cs" t="Include" />
                   </e>
+                  <e p="AppSettingVm.cs" t="Include" />
                   <e p="BreadcrumbViewModel.cs" t="Include" />
                   <e p="CountryForm.cs" t="Include" />
                   <e p="CustomerGroupForm.cs" t="Include" />
@@ -691,6 +720,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="CoreCustomModelBuilder.cs" t="Include" />
               <e p="CoreSeedData.cs" t="Include" />
@@ -718,10 +748,10 @@
               <e p="SimplRoleStore.cs" t="Include" />
               <e p="SimplSignInManager.cs" t="Include" />
               <e p="SimplUserStore.cs" t="Include" />
+              <e p="SlugRouteValueTransformer.cs" t="Include" />
               <e p="TagHelpers" t="Include">
                 <e p="AppendVersionTagHelper.cs" t="Include" />
               </e>
-              <e p="UrlSlugRoute.cs" t="Include" />
               <e p="WorkContext.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
@@ -754,13 +784,17 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Core.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Core.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
             <e p="Services" t="Include">
+              <e p="CurrencyService.cs" t="Include" />
               <e p="EntityService.cs" t="Include" />
+              <e p="IContentLocalizationService.cs" t="Include" />
+              <e p="ICurrencyService.cs" t="Include" />
               <e p="IEmailSender.cs" t="Include" />
               <e p="IEntityService.cs" t="Include" />
               <e p="IMediaService.cs" t="Include" />
@@ -769,19 +803,17 @@
               <e p="ISmsSender.cs" t="Include" />
               <e p="IStorageService.cs" t="Include" />
               <e p="IThemeService.cs" t="Include" />
-              <e p="ITokenService.cs" t="Include" />
               <e p="IWidgetInstanceService.cs" t="Include" />
               <e p="MediaService.cs" t="Include" />
               <e p="SettingService.cs" t="Include" />
               <e p="SmsSender.cs" t="Include" />
               <e p="ThemeService.cs" t="Include" />
-              <e p="TokenService.cs" t="Include" />
               <e p="WidgetInstanceService.cs" t="Include" />
             </e>
             <e p="SimplCommerce.Module.Core.csproj" t="IncludeRecursive" />
             <e p="wwwroot" t="Include">
               <e p="admin" t="Include">
-                <e p="admin-app.js" t="Include" />
+                <e p="admin-app-config.js" t="Include" />
                 <e p="admin-core.css" t="Include" />
                 <e p="common" t="Include">
                   <e p="common.js" t="Include" />
@@ -859,7 +891,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.DinkToPdf.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -870,9 +902,10 @@
             <e p="bin" t="ExcludeRecursive" />
             <e p="EmailSender.cs" t="Include" />
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.EmailSenderSendgrid.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -890,7 +923,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.EmailSenderSmtp.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -923,7 +956,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.HangfireJobs.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -950,6 +983,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="InventoryCustomModelBuilder.cs" t="Include" />
             </e>
@@ -962,7 +996,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Inventory.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1008,6 +1042,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="LocalizationCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1026,10 +1061,13 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Localization.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
+            </e>
+            <e p="Services" t="Include">
+              <e p="ContentLocalizationService.cs" t="Include" />
             </e>
             <e p="SimplCommerce.Module.Localization.csproj" t="IncludeRecursive" />
             <e p="TagHelpers" t="Include">
@@ -1080,6 +1118,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="NewsCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1092,8 +1131,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.News.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.News.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1197,8 +1237,9 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Notifications.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Notifications.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1280,6 +1321,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="OrderCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1301,8 +1343,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Orders.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Orders.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1360,6 +1403,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentBraintreeCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1370,8 +1414,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.PaymentBraintree.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentBraintree.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1388,6 +1433,64 @@
                   <e p="braintree-service.js" t="Include" />
                 </e>
                 <e p="paymentBraintree.module.js" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="SimplCommerce.Module.PaymentCashfree" t="IncludeRecursive">
+            <e p="Areas" t="Include">
+              <e p="PaymentCashfree" t="Include">
+                <e p="Components" t="Include">
+                  <e p="CashfreeLandingViewComponent.cs" t="Include" />
+                </e>
+                <e p="Controllers" t="Include">
+                  <e p="CashfreeApiController.cs" t="Include" />
+                  <e p="CashfreeController.cs" t="Include" />
+                </e>
+                <e p="ViewModels" t="Include">
+                  <e p="CashfreeCheckoutForm.cs" t="Include" />
+                  <e p="CashfreeConfigForm.cs" t="Include" />
+                  <e p="CashfreeResponse.cs" t="Include" />
+                </e>
+                <e p="Views" t="Include">
+                  <e p="_ViewImports.cshtml" t="Include" />
+                  <e p="_ViewStart.cshtml" t="Include" />
+                  <e p="Shared" t="Include">
+                    <e p="Components" t="Include">
+                      <e p="CashfreeLanding" t="Include">
+                        <e p="Default.cshtml" t="Include" />
+                      </e>
+                    </e>
+                  </e>
+                </e>
+              </e>
+            </e>
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
+            <e p="DATA" t="Include">
+              <e p="PaymentCashfreeCustomModelBuilder.cs" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="PaymentProviderHelper.cs" t="Include" />
+            </e>
+            <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp3.1" t="Include">
+                  <e p="SimplCommerce.Module.PaymentCashfree.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentCashfree.RazorAssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="SimplCommerce.Module.PaymentCashfree.csproj" t="IncludeRecursive" />
+            <e p="wwwroot" t="Include">
+              <e p="admin" t="Include">
+                <e p="cashfree" t="Include">
+                  <e p="cashfree-config-form.html" t="Include" />
+                  <e p="cashfree-config-form.js" t="Include" />
+                  <e p="cashfree-service.js" t="Include" />
+                </e>
+                <e p="paymentCashfree.module.js" t="Include" />
               </e>
             </e>
           </e>
@@ -1415,6 +1518,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentCoDCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1423,10 +1527,12 @@
               <e p="PaymentProviderHelper.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.PaymentCoD.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentCoD.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1466,6 +1572,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentMomoCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1473,11 +1580,13 @@
               <e p="PaymentProviderHelper.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="MomoSecurityHelper.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.PaymentMomo.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentMomo.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1529,6 +1638,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentNganLuongCustomerModelBuilder.cs" t="Include" />
             </e>
@@ -1537,10 +1647,12 @@
               <e p="PaymentProviderHelper.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.PaymentNganLuong.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentNganLuong.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1589,6 +1701,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentPaypalExpressCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1596,10 +1709,12 @@
               <e p="PaymentProviderHelper.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.PaymentPaypalExpress.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentPaypalExpress.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1645,6 +1760,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentsCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1654,10 +1770,12 @@
               <e p="PaymentStatus.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Payments.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Payments.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1706,6 +1824,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PaymentStripeCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1713,10 +1832,12 @@
               <e p="PaymentProviderHelper.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.PaymentStripe.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.PaymentStripe.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1746,6 +1867,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="PricingCustomModelBuilder.cs" t="Include" />
             </e>
@@ -1763,7 +1885,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Pricing.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1831,8 +1953,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ProductComparison.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.ProductComparison.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -1876,6 +1999,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="IRecentlyViewedProductRepository.cs" t="Include" />
               <e p="ProductRecentlyViewedCustomModelBuilder.cs" t="Include" />
@@ -1891,15 +2015,16 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ProductRecentlyViewed.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.ProductRecentlyViewed.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
             <e p="SimplCommerce.Module.ProductRecentlyViewed.csproj" t="IncludeRecursive" />
             <e p="wwwroot" t="Include">
               <e p="admin" t="Include">
-                <e p="product-recently-viewed.module.js" t="Include" />
+                <e p="productrecentlyviewed.module.js" t="Include" />
                 <e p="recently-viewed-widget" t="Include">
                   <e p="recently-viewed-widget-form.html" t="Include" />
                   <e p="recently-viewed-widget-form.js" t="Include" />
@@ -1950,6 +2075,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="IReplyRepository.cs" t="Include" />
               <e p="IReviewRepository.cs" t="Include" />
@@ -1968,8 +2094,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Reviews.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Reviews.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -2027,8 +2154,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.SampleData.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.SampleData.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -2152,14 +2280,17 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="Models" t="Include">
               <e p="Query.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Search.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.Search.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -2185,6 +2316,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="ShipmentCustomModelBuilder.cs" t="Include" />
             </e>
@@ -2200,7 +2332,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Shipments.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2240,6 +2372,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="ShippingCustomModelBuilder.cs" t="Include" />
             </e>
@@ -2247,9 +2380,10 @@
               <e p="ShippingProvider.cs" t="Include" />
             </e>
             <e p="module.json" t="Include" />
+            <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Shipping.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2278,7 +2412,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ShippingFree.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2294,7 +2428,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ShippingPrices.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2322,6 +2456,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="ShippingTableRateCustomModelBuilder.cs" t="Include" />
             </e>
@@ -2332,7 +2467,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ShippingTableRate.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2402,8 +2537,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.ShoppingCart.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.ShoppingCart.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -2429,7 +2565,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.SignalR.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2450,7 +2586,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.StorageAmazonS3.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2465,7 +2601,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.StorageAzureBlob.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2479,7 +2615,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.StorageLocal.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2502,6 +2638,7 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="DATA" t="Include">
               <e p="TaxCustomModelBuilder.cs" t="Include" />
             </e>
@@ -2513,7 +2650,7 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Tax.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2558,11 +2695,12 @@
               </e>
             </e>
             <e p="bin" t="ExcludeRecursive" />
+            <e p="bundleconfig.json" t="Include" />
             <e p="module.json" t="Include" />
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.Vendors.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -2621,8 +2759,9 @@
             <e p="ModuleInitializer.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="SimplCommerce.Module.WishList.AssemblyInfo.cs" t="Include" />
+                  <e p="SimplCommerce.Module.WishList.RazorAssemblyInfo.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -2665,6 +2804,7 @@
           <e p="Localization" t="Include">
             <e p="Culture.cs" t="Include" />
             <e p="LanguageDirection.cs" t="Include" />
+            <e p="LocalizedContentProperty.cs" t="Include" />
             <e p="Resource.cs" t="Include" />
           </e>
           <e p="Models" t="Include">
@@ -2684,7 +2824,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.Infrastructure.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -2727,11 +2867,15 @@
           <e p="appsettings.docker.json" t="Include" />
           <e p="appsettings.json" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
+          <e p="bundleconfig.json" t="Include" />
           <e p="extensions" t="Include">
             <e p="ApplicationBuilderExtensions.cs" t="Include" />
             <e p="ServiceCollectionExtensions.cs" t="Include" />
           </e>
-          <e p="gulpfile.js" t="Include" />
+          <e p="IdentityServer" t="Include">
+            <e p="IdentityServerConfig.cs" t="Include" />
+            <e p="SimplProfileService.cs" t="Include" />
+          </e>
           <e p="libman.json" t="Include" />
           <e p="Migrations" t="Include">
             <e p="20190212090153_SimplCommerce_v1_0_0.cs" t="Include" />
@@ -2742,6 +2886,16 @@
             <e p="20190302122027_MomoPayment.Designer.cs" t="Include" />
             <e p="20190314044223_AddedNganLuongPayment.cs" t="Include" />
             <e p="20190314044223_AddedNganLuongPayment.Designer.cs" t="Include" />
+            <e p="20190710165614_DefaultCultureConfiguration.cs" t="Include" />
+            <e p="20190710165614_DefaultCultureConfiguration.Designer.cs" t="Include" />
+            <e p="20190726221912_AddedCurrencySetting.cs" t="Include" />
+            <e p="20190726221912_AddedCurrencySetting.Designer.cs" t="Include" />
+            <e p="20190727083300_AddedContentLocalization.cs" t="Include" />
+            <e p="20190727083300_AddedContentLocalization.Designer.cs" t="Include" />
+            <e p="20190801065533_AddedCashfreePayment.cs" t="Include" />
+            <e p="20190801065533_AddedCashfreePayment.Designer.cs" t="Include" />
+            <e p="20190803175214_AddedAssetBundlingConfig.cs" t="Include" />
+            <e p="20190803175214_AddedAssetBundlingConfig.Designer.cs" t="Include" />
             <e p="SimplDbContextModelSnapshot.cs" t="Include" />
           </e>
           <e p="MigrationSimplDbContextFactory.cs" t="Include" />
@@ -2940,15 +3094,15 @@
           <e p="node_modules/glob" t="IncludeRecursive" />
           <e p="node_modules/gulp" t="IncludeRecursive" />
           <e p="node_modules/gulp-clean" t="IncludeRecursive" />
-          <e p="node_modules/yargs" t="IncludeRecursive" />
-          <e p="npm-shrinkwrap.json" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.WebHost.AssemblyInfo.cs" t="Include" />
+                <e p="SimplCommerce.WebHost.RazorAssemblyInfo.cs" t="Include" />
               </e>
             </e>
           </e>
+          <e p="package-lock.json" t="Include" />
           <e p="package.json" t="Include" />
           <e p="Program.cs" t="Include" />
           <e p="Properties" t="Include">
@@ -2956,6 +3110,7 @@
           </e>
           <e p="SimplCommerce.WebHost.csproj" t="IncludeRecursive" />
           <e p="Startup.cs" t="Include" />
+          <e p="tempkey.rsa" t="Include" />
           <e p="Temps" t="Include">
             <e p=".gitignore" t="Include" />
           </e>
@@ -3061,6 +3216,7 @@
                 <e p="Shared" t="Include">
                   <e p="_Layout.cshtml" t="Include" />
                   <e p="_LoginPartial.cshtml" t="Include" />
+                  <e p="_SelectLanguagePartial.cshtml" t="Include" />
                 </e>
               </e>
             </e>
@@ -3221,7 +3377,22 @@
                 </e>
                 <e p="js" t="Include">
                   <e p="locales" t="Include">
+                    <e p="ar.js" t="Include" />
+                    <e p="de.js" t="Include" />
+                    <e p="es.js" t="Include" />
+                    <e p="fa.js" t="Include" />
+                    <e p="fr.js" t="Include" />
+                    <e p="it.js" t="Include" />
+                    <e p="ko.js" t="Include" />
+                    <e p="LANG.js" t="Include" />
+                    <e p="pl.js" t="Include" />
+                    <e p="pt-BR.js" t="Include" />
+                    <e p="ro.js" t="Include" />
+                    <e p="ru.js" t="Include" />
+                    <e p="tr.js" t="Include" />
+                    <e p="ua.js" t="Include" />
                     <e p="vi-vn.js" t="Include" />
+                    <e p="zh.js" t="Include" />
                   </e>
                   <e p="star-rating.js" t="Include" />
                   <e p="star-rating.min.js" t="Include" />
@@ -3258,6 +3429,12 @@
                   <e p="bootstrap.min.js.map" t="Include" />
                 </e>
               </e>
+              <e p="flags" t="Include">
+                <e p="blank.gif" t="Include" />
+                <e p="flags.css" t="Include" />
+                <e p="flags.min.css" t="Include" />
+                <e p="flags.png" t="Include" />
+              </e>
               <e p="font-awesome" t="Include">
                 <e p="css" t="Include">
                   <e p="font-awesome.css" t="Include" />
@@ -3274,13 +3451,21 @@
               </e>
               <e p="i18n" t="Include">
                 <e p="angular-locale_ar-tn.js" t="Include" />
+                <e p="angular-locale_ar.js" t="Include" />
                 <e p="angular-locale_en-us.js" t="Include" />
+                <e p="angular-locale_en.js" t="Include" />
                 <e p="angular-locale_fr-fr.js" t="Include" />
+                <e p="angular-locale_fr.js" t="Include" />
                 <e p="angular-locale_ko-kr.js" t="Include" />
+                <e p="angular-locale_ko.js" t="Include" />
                 <e p="angular-locale_pt-br.js" t="Include" />
+                <e p="angular-locale_pt.js" t="Include" />
                 <e p="angular-locale_ru-ru.js" t="Include" />
+                <e p="angular-locale_ru.js" t="Include" />
                 <e p="angular-locale_uk-ua.js" t="Include" />
+                <e p="angular-locale_uk.js" t="Include" />
                 <e p="angular-locale_vi-vn.js" t="Include" />
+                <e p="angular-locale_vi.js" t="Include" />
               </e>
               <e p="jquery" t="Include">
                 <e p="jquery.js" t="Include" />
@@ -3467,8 +3652,8 @@
                 <e p="wNumb.js" t="Include" />
               </e>
             </e>
+            <e p="libs.min.css" t="Include" />
             <e p="Modules" t="Include">
-              <e p=".gitignore" t="Include" />
               <e p="ActivityLog" t="Include">
                 <e p="admin" t="Include">
                   <e p="activitylog-service.js" t="Include" />
@@ -3989,6 +4174,8 @@
               <e p="CozaStore" t="Include">
                 <e p="CozaStore.png" t="Include" />
                 <e p="css" t="Include">
+                  <e p="flags.css" t="Include" />
+                  <e p="flags.min.css" t="Include" />
                   <e p="main.css" t="Include" />
                   <e p="simpl.css" t="Include" />
                   <e p="util.css" t="Include" />
@@ -4117,7 +4304,9 @@
                 </e>
                 <e p="Images" t="Include">
                   <e p="icons" t="Include">
+                    <e p="blank.gif" t="Include" />
                     <e p="favicon.png" t="Include" />
+                    <e p="flags.png" t="Include" />
                     <e p="icon-close.png" t="Include" />
                     <e p="icon-close2.png" t="Include" />
                     <e p="icon-email.png" t="Include" />
@@ -4139,6 +4328,7 @@
                   <e p="cozastore.js" t="Include" />
                   <e p="slick-custom.js" t="Include" />
                 </e>
+                <e p="site.min.css" t="Include" />
                 <e p="vendor" t="Include">
                   <e p="animate" t="Include">
                     <e p="animate.css" t="Include" />
@@ -4196,9 +4386,8 @@
           <e p="EnumHelperTests.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.Infrastructure.Tests.AssemblyInfo.cs" t="Include" />
-                <e p="SimplCommerce.Infrastructure.Tests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -4215,9 +4404,8 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.Module.Cms.Tests.AssemblyInfo.cs" t="Include" />
-                <e p="SimplCommerce.Module.Cms.Tests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -4230,22 +4418,19 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.Module.Core.Tests.AssemblyInfo.cs" t="Include" />
-                <e p="SimplCommerce.Module.Core.Tests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
           <e p="SimplCommerce.Module.Core.Tests.csproj" t="IncludeRecursive" />
-          <e p="TestDbAsyncQueryProvider.cs" t="Include" />
         </e>
         <e p="SimplCommerce.Module.Inventory.Tests" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.Module.Inventory.Tests.AssemblyInfo.cs" t="Include" />
-                <e p="SimplCommerce.Module.Inventory.Tests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -4260,9 +4445,8 @@
           <e p="CouponServiceTest.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="SimplCommerce.Module.Pricing.Tests.AssemblyInfo.cs" t="Include" />
-                <e p="SimplCommerce.Module.Pricing.Tests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
